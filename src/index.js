@@ -29,11 +29,11 @@ app.put("/videos/:id", (req, reply) => {
     const {id} = req.params
     const {title, description, duration} = req.body
 
-    const existe = database.list().find((item) => {
+    const idVideo = database.list().find((item) => {
         return item.id == id
     })
     
-    if (!existe) {
+    if (!idVideo) {
         return reply.status(404).send({"error.message": "ID Not found"})
     }
 
@@ -49,11 +49,11 @@ app.put("/videos/:id", (req, reply) => {
 app.delete("/videos/:id", (req, reply) => {
     const {id} = req.params
 
-    const existe = database.list().find((item) => {
+    const idVideo = database.list().find((item) => {
         return item.id == id
     })
     
-    if (!existe) {
+    if (!idVideo) {
         return reply.status(404).send({"error.message": "ID Not found"})
     }
 
